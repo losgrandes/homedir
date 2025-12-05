@@ -6,8 +6,10 @@ Package contains my default configuration for below packages. I use them in day 
 * tsh shell
 * git
 * vim
+* tmux
 
 ## Installation
 * git clone https://github.com/losgrandes/homedir.git
 * cd homedir
-* ./install.sh
+* bash install.sh
+* (optional) re-login to start using zsh shell
