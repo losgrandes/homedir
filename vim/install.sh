@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VIMRC=~/.vimrc
-PROJECTS_PATHS=("~/workspace/source/" "~/workspace/internal-source/")
+VIMRC=$HOME/.vimrc
+PROJECTS_PATHS=("$HOME/workspace/source" "$HOME/workspace/internal-source")
 
 if [ -L $VIMRC ];then
     echo "$VIMC already exists. Don't want to overwrite. Exiting!"
@@ -19,8 +19,9 @@ echo "colorscheme molokai" >> $VIMRC
 echo "let g:rehash256 = 1" >> $VIMRC
 
 for proj in ${PROJECTS_PATHS[@]}; do
-    echo -n "Running ctags for $proj"
-    ctags -f $proj/tags -R $proj
+    echo "Running ctags for $proj"
+    cd $proj
+    ctags tags -R .
     echo " Done!"
 done
 echo "All Done!"
