@@ -21,7 +21,7 @@ echo "let g:rehash256 = 1" >> $VIMRC
 for proj in ${PROJECTS_PATHS[@]}; do
     echo "Running ctags for $proj"
     cd $proj
-    ctags tags -R .
+    ctags -f tags -R .
     echo " Done!"
 done
 echo "All Done!"
