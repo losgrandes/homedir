@@ -3,7 +3,7 @@ losgrandes' conf
 
 ## Contents
 Package contains my default configuration for below packages. I use them in day to day engineering.
-* tsh shell
+* zsh shell
 * git
 * vim
 * tmux
