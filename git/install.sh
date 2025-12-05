@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-sudo apt-get install git
+sudo apt-get -q -y install git
 cd git
 cp -n gitconfig ~/.gitconfig
 mkdir -p ~/workspace/source/

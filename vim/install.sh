@@ -1,23 +1,22 @@
 #!/bin/bash
 
-VIMRC=~/.vim/.vimrc
-VIMRC_LINK=~/.vimrc
+VIMRC=~/.vimrc
 PROJECTS_PATHS=("~/workspace/source/" "~/workspace/internal-source/")
 
-if [ -L $VIMRC_LINK ];then
-    echo "$VIMC_LINK already exists. Don't want to overwrite. Exiting!"
+if [ -L $VIMRC ];then
+    echo "$VIMC already exists. Don't want to overwrite. Exiting!"
     exit
 fi
 
-sudo apt-get install vim vim-nox exuberant-ctags pylint yapf3 
+sudo apt-get -q -y install vim vim-nox exuberant-ctags pylint yapf3 
 mkdir ~/.vim/
 cd vim
 cp -r bundle ~/.vim/
-cp vimrc ~/.vimrc
+cp -n vimrc ~/.vimrc
 vim +BundleInstall +qall
-echo "\" Colorscheme" >> $VIMRC_LINK
-echo "colorscheme molokai" >> $VIMRC_LINK
-echo "let g:rehash256 = 1" >> $VIMRC_LINK
+echo "\" Colorscheme" >> $VIMRC
+echo "colorscheme molokai" >> $VIMRC
+echo "let g:rehash256 = 1" >> $VIMRC
 
 for proj in ${PROJECTS_PATHS[@]}; do
     echo -n "Running ctags for $proj"
