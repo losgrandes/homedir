@@ -1,0 +1,4 @@
+[includeIf "gitdir:~/workspace/source/"]
+    path = ~/workspace/source/.gitconfig_include
+[includeIf "gitdir:~/workspace/internal-source/"]
+    path = ~/workspace/internal-source/.gitconfig_include
