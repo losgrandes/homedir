@@ -9,7 +9,7 @@ if [ -L $VIMRC ];then
 fi
 
 sudo apt-get -q -y install vim vim-nox exuberant-ctags pylint yapf3 
-mkdir ~/.vim/
+mkdir -p ~/.vim/
 cd vim
 cp -r bundle ~/.vim/
 cp -n vimrc ~/.vimrc
