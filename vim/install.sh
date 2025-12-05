@@ -9,8 +9,9 @@ if [ -L $VIMRC_LINK ];then
     exit
 fi
 
-sudo apt-get install vim vim-nox exuberant-ctags pylint yapf yapf3 
+sudo apt-get install vim vim-nox exuberant-ctags pylint yapf3 
 mkdir ~/.vim/
+cd vim
 cp -r bundle ~/.vim/
 cp vimrc ~/.vimrc
 vim +BundleInstall +qall
