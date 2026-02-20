@@ -10,8 +10,6 @@ setopt notify              # report the status of background jobs immediately
 setopt numericglobsort     # sort filenames numerically when it makes sense
 setopt promptsubst         # enable command substitution in prompt
 
-WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
-
 # hide EOL sign ('%')
 PROMPT_EOL_MARK=""
 
@@ -271,3 +269,5 @@ fi
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+WORDCHARS='*?[]~&!#$%^(){}<>'
