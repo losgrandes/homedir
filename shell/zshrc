@@ -256,7 +256,7 @@ if [ -f /etc/zsh_command_not_found ]; then
 fi
 
 # Main functionality! Type `mytmux` to list sessions, `mytmux <session_name>` to attach to a session or create a new one with the given name.
-unalias mytmux
+unalias mytmux 2>/dev/null
 function mytmux() {
     if [[ $1 =~ "^[a-zA-Z]+" ]]; then
         tmux attach -t "$1" || tmux new-session -s "$1" \; split-window -h \; split-window -v \; attach
