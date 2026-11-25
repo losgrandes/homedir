@@ -255,8 +255,23 @@ if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
 
-# Main command! Type `mytmux` and you'll get initial tmux setup either reattached or newly created
-alias mytmux='tmux attach -t dev || tmux new-session -s dev \; split-window -h \; split-window -v \; attach'
+# Main functionality! Type `mytmux` to list sessions, `mytmux <session_name>` to attach to a session or create a new one with the given name.
+unalias mytmux
+function mytmux() {
+    if [[ $1 =~ "^[a-zA-Z]+" ]]; then
+        tmux attach -t "$1" || tmux new-session -s "$1" \; split-window -h \; split-window -v \; attach
+    elif [[ -n $1 ]]; then
+        echo "Invalid session name. Session names must start with a letter."
+    else
+        tmux list-sessions
+    fi
+}
+alias pwndbg='~/workspace/tools/pwndbg/bin/pwndbg'
+#alias ssh="kitty +kitten ssh"
+
+pmm-date-diff() {
+    expr `date -d "$1" +"%s"` - `date -d "$2" +"%s"`
+}
 
 # Predictable SSH authentication socket location.
 SOCK="/tmp/ssh-agent-$USER-predictable"
@@ -271,3 +286,5 @@ parse_git_branch() {
 }
 
 WORDCHARS='*?[]~&!#$%^(){}<>'
+
+export PATH="$HOME/.local/bin:$PATH"
